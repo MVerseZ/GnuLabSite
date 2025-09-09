@@ -41,13 +41,13 @@
 
                     <div class="product-item">
                         <h3>Governance token</h3>
-                        <p><a href="https://solscan.io/account/E4BvY2D1jTj2hD1rtrdHoRs96kSrVKjqW68YHHrk7n7X">Подробнее на solscan</a></p>
+                        <p><a target="_blank" href="https://solscan.io/account/E4BvY2D1jTj2hD1rtrdHoRs96kSrVKjqW68YHHrk7n7X">Подробнее на solscan</a></p>
                         <div class="status paused">[ПРИОСТАНОВЛЕНО]</div>
                     </div>
 
                     <div class="product-item">
                         <h3>ТЕЛЕГРАМ БОТ</h3>
-                        <p><a href="https://t.me/ddddd_tech_bot">Телеграм бот для анализа рынка</a></p>
+                        <p><a target="_blank" href="https://t.me/ddddd_tech_bot">Телеграм бот для анализа рынка</a></p>
                         <div class="status">[АКТИВНО]</div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
             <section class="contact">
                 <h2>> КОНТАКТЫ</h2>
                 <div class="contact-info">
-                    <p>GITHUB: <a href="https://github.com/MVerseZ">github.com/MVerseZ</a></p>
+                    <p>GITHUB: <a target="_blank" href="https://github.com/MVerseZ">github.com/MVerseZ</a></p>
                 </div>
             </section>
 
@@ -66,19 +66,16 @@
                     <div class="wallet-item">
                         <h3>BITCOIN</h3>
                         <div class="wallet-address">1FGn84PMBjFLeZUyDfqkTD3LwfnXyY5kRh</div>
-                        <div class="wallet-qr">QR: BTC</div>
                     </div>
                     
                     <div class="wallet-item">
                         <h3>ETHEREUM</h3>
                         <div class="wallet-address">0x4eB621d142AfF7F71109E3ad18Ddf0fD29932b97</div>
-                        <div class="wallet-qr">QR: ETH</div>
                     </div>
                     
                     <div class="wallet-item">
                         <h3>SOLANA</h3>
                         <div class="wallet-address">ARykWdiexrXPCm4FqKdQ3woWf6HzFB2zvYXcHA7qj7Yo</div>
-                        <div class="wallet-qr">QR: SOL</div>
                     </div>
                 </div>
                 <p class="donation-note">Любая поддержка помогает лаборатории развиваться!</p>
@@ -91,5 +88,30 @@
             <div class="cursor-blink">█</div>
         </footer>
     </div>
+
+    <script>
+        // Копирование адресов кошельков при клике
+        document.querySelectorAll('.wallet-address').forEach(address => {
+            var addr = address.textContent;
+            address.addEventListener('click', function() {
+                navigator.clipboard.writeText(this.textContent).then(() => {
+                    // Временная смена цвета для подтверждения
+                    const originalColor = this.style.color;
+                    const originalBg = this.style.backgroundColor;
+                    this.style.color = '#00ff00';
+                    this.style.backgroundColor = '#001100';
+                    this.textContent = 'СКОПИРОВАНО!';
+                    
+                    setTimeout(() => {
+                        this.style.color = originalColor;
+                        this.style.backgroundColor = originalBg;
+                        this.textContent = addr;
+                    }, 1500);
+                }).catch(err => {
+                    console.error('Ошибка копирования: ', err);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
